@@ -1,0 +1,36 @@
+.square-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.square-container .square {
+  background: black;
+  padding:5px;
+  border: 2px solid white;
+  width: 80px;
+  height: 80px;
+}
+
+.square-container .square .light {
+  position: relative;
+  top: 30px;
+  left: 30px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.light.red {
+  background: red;
+}
+
+.light.blue {
+  background: blue;
+}
+
+.light.green {
+  background: green;
+}
