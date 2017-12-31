@@ -7,7 +7,7 @@ class SquareManager {
         this.currentlyActiveSquareIndex = null;
     }
 
-    initSquares() {
+    resetSquares() {
         this.squares = [
             new Square,
             new Square,
@@ -15,17 +15,26 @@ class SquareManager {
         ];
     }
 
+    activateNewGameSquare() {
+        let activeSpot = ActiveSpotFactory.createNewGameSpot();
+        let squareToActivate = this.squares[2];
+        this.updatePreviousSquareIndexes(2);
+        squareToActivate.activate(activeSpot);
+    }
+
     activateNewSquare() {
         let currentActiveSquare = this.squares[this.currentlyActiveSquareIndex];
         let activeSpot = ActiveSpotFactory.createActiveSpot();
-        let squareToActivate = this.getSquareToActivate();
+        let squareIndexToActivate = this.getSquareIndexToActivate();
+        this.updatePreviousSquareIndexes(squareIndexToActivate);
+        let squareToActivate = this.squares[squareIndexToActivate];
         squareToActivate.activate(activeSpot);
         if (currentActiveSquare) {
             currentActiveSquare.deActivate();
         }
     }
 
-    getSquareToActivate() {
+    getSquareIndexToActivate() {
         let newSquareIndex = 2;
         switch (this.currentlyActiveSquareIndex) {
             case 0:
@@ -47,9 +56,8 @@ class SquareManager {
                 newSquareIndex = 1;
                 break;
         }
-        
-        this.updatePreviousSquareIndexes(newSquareIndex);
-        return this.squares[newSquareIndex];
+
+        return newSquareIndex;
     }
 
     updatePreviousSquareIndexes(newSquareIndex) {

@@ -1,7 +1,8 @@
 import { getRandomInt } from '../helpers';
 
 export default class ActiveSpot {
-    constructor(count) {
+    constructor(count, isNewGameSpot) {
+        this.isNewGameSpot = isNewGameSpot;
         this.initialCount = count;
         this.count = count;
     }

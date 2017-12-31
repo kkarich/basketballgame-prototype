@@ -34,3 +34,15 @@
 .light.green {
   background: green;
 }
+
+.time {
+  position: absolute;
+  top: 25%;
+  left: 25%;
+}
+
+.score {
+  position: absolute;
+  top: 30%;
+  left: 25%;
+}
